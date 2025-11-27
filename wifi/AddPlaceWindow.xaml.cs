@@ -28,6 +28,26 @@ namespace wifi
         {
             InitializeComponent();
         }
+        private bool PlaceExists(string name, string address)
+        {
+            try
+            {
+                string query = "SELECT COUNT(*) FROM places WHERE LOWER(TRIM(name)) = LOWER(TRIM(@name)) AND LOWER(TRIM(address)) = LOWER(TRIM(@address))";
+                var parameters = new Dictionary<string, object>
+                {
+                    { "@name", name },
+                    { "@address", address }
+                };
+
+                var result = DatabaseHelper.ExecuteScalar(query, parameters);
+                return Convert.ToInt32(result) > 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при проверке данных: " + ex.Message);
+                return true; // В случае ошибки считаем что место существует для безопасности
+            }
+        }
 
         /// <summary>
         /// Открывает диалог выбора изображения и сохраняет путь к нему.
@@ -63,7 +83,12 @@ namespace wifi
                 return;
             }
 
-           
+            if (PlaceExists(name, address))
+            {
+                MessageBox.Show("Место с таким названием и адресом уже существует!\nИзмените название или адрес.");
+                NameBox.Focus();
+                return;
+            }
 
             // Сохранение фото в папку проекта
             string storedPath = "";

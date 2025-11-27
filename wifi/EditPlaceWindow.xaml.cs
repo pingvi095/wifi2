@@ -70,8 +70,29 @@ namespace wifi
                 MessageBox.Show("Заполните все поля!");
                 return;
             }
+            try
+            {
+                string checkQuery = "SELECT COUNT(*) FROM places WHERE LOWER(TRIM(name)) = LOWER(TRIM(@name)) AND LOWER(TRIM(address)) = LOWER(TRIM(@address)) AND id != @id";
+                var checkParams = new Dictionary<string, object>
+        {
+            { "@name", name },
+            { "@address", address },
+            { "@id", place.Id }
+        };
 
-        
+                var result = DatabaseHelper.ExecuteScalar(checkQuery, checkParams);
+                if (Convert.ToInt32(result) > 0)
+                {
+                    MessageBox.Show("Место с таким названием и адресом уже существует!\nИзмените название или адрес.");
+                    NameBox.Focus();
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при проверке данных: " + ex.Message);
+                return;
+            }
             // Подготовка SQL-запроса
             string query = @"UPDATE places SET 
                                 name=@n,
