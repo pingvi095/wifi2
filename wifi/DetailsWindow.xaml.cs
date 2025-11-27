@@ -11,27 +11,15 @@ using wifi.Models;
 
 namespace wifi
 {
-    /// <summary>
-    /// Окно с детальной информацией о выбранном месте и его отзывах.
-    /// Позволяет просматривать описание, рейтинг, фото, а также добавлять отзывы.
-    /// </summary>
+    
     public partial class DetailsWindow : Window
     {
-        /// <summary>
-        /// Идентификатор выбранного места.
-        /// </summary>
+     
         private readonly int placeId;
         private readonly bool isAdmin;
-        /// <summary>
-        /// Коллекция отзывов, отображаемая в интерфейсе.
-        /// </summary>
+   
         private readonly ObservableCollection<Review> reviews = new();
 
-        /// <summary>
-        /// Конструктор окна деталей.
-        /// Загружает информацию о месте и все отзывы при инициализации.
-        /// </summary>
-        /// <param name="id">ID выбранного места в базе данных.</param>
         public DetailsWindow(int id, bool isAdmin)
         {
             InitializeComponent();
@@ -43,11 +31,6 @@ namespace wifi
             LoadReviews();
             this.isAdmin = isAdmin;
         }
-
-        /// <summary>
-        /// Загружает основную информацию о месте (название, адрес, рейтинг, описание, фото и др.)
-        /// из таблицы <c>places</c>.
-        /// </summary>
         private void LoadDetails()
         {
             try
@@ -75,12 +58,6 @@ namespace wifi
                 MessageBox.Show("Ошибка при загрузке деталей: " + ex.Message);
             }
         }
-
-        /// <summary>
-        /// Загружает изображение места. Если изображение не найдено или произошла ошибка,
-        /// отображает текст "Фотография отсутствует".
-        /// </summary>
-        /// <param name="path">Путь к файлу изображения</param>
         private void LoadImage(string path)
         {
             try
@@ -106,10 +83,6 @@ namespace wifi
                 NoImageTextBlock.Visibility = Visibility.Visible;
             }
         }
-
-        /// <summary>
-        /// Загружает список отзывов для данного места из таблицы <c>reviews</c>.
-        /// </summary>
         private void LoadReviews()
         {
             reviews.Clear();
@@ -173,8 +146,6 @@ namespace wifi
                 string update = "UPDATE places SET rating=@r WHERE id=@id";
                 var updateParams = new Dictionary<string, object> { { "@r", avg }, { "@id", placeId } };
                 DatabaseHelper.ExecuteNonQuery(update, updateParams);
-
-                // Очистка полей и обновление интерфейса
                 AuthorBox.Text = "";
                 CommentBox.Text = "";
                 StarsBox.SelectedIndex = 2;
@@ -211,10 +182,6 @@ namespace wifi
                 AuthorBox.Text = "";
             }
         }
-
-        /// <summary>
-        /// Закрывает текущее окно.
-        /// </summary>
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             Close();

@@ -3,24 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Добавить место" Height="450" Width="435" MinHeight = "450" MaxHeight = "450" MinWidth = "435" MaxWidth = "435"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
-        Background="#FF163832"
-     >
-
+        Background="#FF163832" >
     <ScrollViewer>
         <StackPanel Margin="12">
             <TextBlock Text="Название:" Foreground="White"/>
             <TextBox x:Name="NameBox" MaxLength="30" Margin="0,0,0,8" TextWrapping="Wrap"/>
-
             <TextBlock Text="Тип:" Foreground="White"/>
             <ComboBox x:Name="TypeBox" Margin="0,0,0,8">
                 <ComboBoxItem Content="Кафе"/>
                 <ComboBoxItem Content="Библиотека"/>
                 <ComboBoxItem Content="Лаунж-зона"/>
             </ComboBox>
-
             <TextBlock Text="Адрес:" Foreground="White"/>
             <TextBox x:Name="AddressBox" MaxLength="45" Margin="0,0,0,8" TextWrapping="Wrap"/>
-
             <TextBlock Text="Качество Wi-Fi:" Foreground="White"/>
             <ComboBox x:Name="WiFiBox" Margin="0,0,0,8">
                 <ComboBoxItem Content="Плохо"/>
@@ -28,7 +23,6 @@
                 <ComboBoxItem Content="Хорошо"/>
                 <ComboBoxItem Content="Отлично"/>
             </ComboBox>
-
             <TextBlock Text="Часы работы:" Foreground="White"/>
             <ComboBox x:Name="WorkBox" Margin="0,0,0,8">
                 <ComboBoxItem Content="Круглосуточно"/>
@@ -38,15 +32,12 @@
                 <ComboBoxItem Content="09:00-20:00"/>
                 <ComboBoxItem Content="10:00-19:00"/>
             </ComboBox>
-
             <TextBlock Text="Контакт:" Foreground="White"/>
             <TextBox x:Name="ContactBox" MaxLength="11" Margin="0,0,0,8" TextWrapping="Wrap" TextChanged="ContactBox_TextChanged"/>
-
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <Button Content="Выбрать фото..." Click="ChoosePhoto_Click" Margin="0,0,8,0"/>
                 <TextBlock x:Name="PhotoPathText" VerticalAlignment="Center" Text="(не выбрано)" Foreground="White"/>
             </StackPanel>
-
             <Button Content="Сохранить" Margin="0,12,0,0" Click="Save_Click" Background="#FF99D2A2"/>
         </StackPanel>
     </ScrollViewer>

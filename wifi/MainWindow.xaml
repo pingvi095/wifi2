@@ -3,9 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Поиск мест с Wi-Fi" Height="600" Width="1100" MinHeight="600" MaxHeight="600" MinWidth="1100" MaxWidth="1100"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize" Background="#FF163832"
-        >
-
+        ResizeMode="NoResize" Background="#FF163832">
     <Grid Margin="12">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -14,27 +12,23 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
         <!-- Заголовок и кнопка Назад -->
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,10">
             <Button x:Name="BackButton" Content="← Назад" Width="80" Margin="0,0,20,0" Click="BackButton_Click" 
                     ToolTip="Вернуться к выбору роли" Background="#FFCDDACF"/>
             <TextBlock Text="Поиск мест с Wi-Fi" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Foreground="White"/>
         </StackPanel>
-
         <!-- Поиск и фильтры -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,8">
             <TextBox x:Name="SearchBox" Width="300" Margin="0,0,8,0" Text="Поиск..." Foreground="Gray"
                      GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus" TextChanged="SearchBox_TextChanged"
                      MaxLength="10"/>
-
             <ComboBox x:Name="TypeFilter" Width="150" Margin="0,0,8,0" SelectionChanged="Filters_Changed">
                 <ComboBoxItem Content="Все типы" IsSelected="True"/>
                 <ComboBoxItem Content="Кафе"/>
                 <ComboBoxItem Content="Библиотека"/>
                 <ComboBoxItem Content="Лаунж-зона"/>
             </ComboBox>
-
             <ComboBox x:Name="WiFiFilter" Width="150" Margin="0,0,8,0" SelectionChanged="Filters_Changed">
                 <ComboBoxItem Content="Любое" IsSelected="True"/>
                 <ComboBoxItem Content="Плохо"/>
@@ -42,7 +36,6 @@
                 <ComboBoxItem Content="Хорошо"/>
                 <ComboBoxItem Content="Отлично"/>
             </ComboBox>
-
             <ComboBox x:Name="HoursFilter" Width="170" Margin="0,0,8,0" SelectionChanged="Filters_Changed">
                 <ComboBoxItem Content="Любые часы" IsSelected="True"/>
                 <ComboBoxItem Content="Круглосуточно"/>
@@ -62,14 +55,12 @@
                 <ComboBoxItem Content="По названию (Я→А)"/>
             </ComboBox>
         </StackPanel>
-
         <!-- Быстрые фильтры -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,8">
             <Button Content="Показать только 24/7" Click="Quick24_Click" Margin="0,0,8,0" Background="#FFA8C3AD"/>
             <Button Content="Только кафе с отличным Wi-Fi" Click="QuickCafeGood_Click" Background="#FFA8C3AD"/>
             <Button Content="Сбросить фильтры" Margin="8,0,8,0"  Click="ResetFilters_Click" Background="#FFCDDACF"/>
         </StackPanel>
-
         <!-- DataGrid -->
         <DataGrid x:Name="PlacesGrid" Grid.Row="3" AutoGenerateColumns="False" IsReadOnly="True"
                   SelectionMode="Single" Margin="0,0,0,8" Background="#FF8EB69B">
@@ -89,7 +80,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-
         <!-- Админ-панель -->
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="AddButton" Content="Добавить" Width="100" Margin="6" Click="Add_Click" Background="#FFDAF1DE" Visibility="Collapsed"/>
