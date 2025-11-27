@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using wifi.Helpers;
 using wifi.Models;
@@ -184,6 +185,30 @@ namespace wifi
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка при добавлении отзыва: " + ex.Message);
+            }
+        }
+        private void AuthorBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (AuthorBox.Text == "Введите ваше имя")
+            {
+                AuthorBox.Text = "";
+                AuthorBox.Foreground = System.Windows.Media.Brushes.Black;
+            }
+        }
+
+        private void AuthorBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(AuthorBox.Text))
+            {
+                AuthorBox.Text = "Введите ваше имя";
+                AuthorBox.Foreground = System.Windows.Media.Brushes.Gray;
+            }
+        }
+        private void AuthorBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (AuthorBox.Text == "Введите ваше имя" && AuthorBox.Foreground == System.Windows.Media.Brushes.Black)
+            {
+                AuthorBox.Text = "";
             }
         }
 
