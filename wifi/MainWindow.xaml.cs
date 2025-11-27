@@ -34,7 +34,12 @@ namespace wifi
         public MainWindow()
         {
             InitializeComponent();
-            PlacesGrid.ItemsSource = places;
+            PlacesGrid.ItemsSource = places; 
+            foreach (var column in PlacesGrid.Columns)
+            {
+                column.CanUserSort = false;
+            }
+
             LoadPlaces();
         }
 
