@@ -121,5 +121,25 @@ namespace wifi
             MessageBox.Show("Место успешно добавлено!");
             Close();
         }
+
+        private void ContactBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // Удаляем все не-цифровые символы
+            var textBox = sender as TextBox;
+            if (textBox != null)
+            {
+                string newText = new string(textBox.Text.Where(char.IsDigit).ToArray());
+                if (textBox.Text != newText)
+                {
+                    textBox.Text = newText;
+                    textBox.CaretIndex = newText.Length;
+                }
+            }
+        }
+
+        private void OnlyNum(object s, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.Text, 0);
+        }
     }
 }
