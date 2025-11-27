@@ -20,7 +20,7 @@ namespace wifi
         /// Идентификатор выбранного места.
         /// </summary>
         private readonly int placeId;
-
+        private readonly bool isAdmin;
         /// <summary>
         /// Коллекция отзывов, отображаемая в интерфейсе.
         /// </summary>
@@ -31,13 +31,16 @@ namespace wifi
         /// Загружает информацию о месте и все отзывы при инициализации.
         /// </summary>
         /// <param name="id">ID выбранного места в базе данных.</param>
-        public DetailsWindow(int id)
+        public DetailsWindow(int id, bool isAdmin)
         {
             InitializeComponent();
             placeId = id;
             ReviewsList.ItemsSource = reviews;
+            if (isAdmin)
+                ReviewPanel.Visibility = Visibility.Collapsed;
             LoadDetails();
             LoadReviews();
+            this.isAdmin = isAdmin;
         }
 
         /// <summary>

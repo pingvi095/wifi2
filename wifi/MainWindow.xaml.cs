@@ -324,7 +324,7 @@ namespace wifi
         {
             if ((sender as Button)?.DataContext is Place p)
             {
-                var details = new DetailsWindow(p.Id);
+                var details = new DetailsWindow(p.Id,isAdmin); 
                 details.ShowDialog();
                 LoadPlaces(SearchBox.Text == "Поиск..." ? "" : SearchBox.Text);
             }

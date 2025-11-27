@@ -82,6 +82,7 @@
             </Border>
 
             <!-- Добавление отзыва -->
+            <StackPanel x:Name="ReviewPanel">
             <TextBlock Text="Добавить отзыв:" FontWeight="Bold" Margin="0,4,0,6" Foreground="White"/>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
                 <TextBox x:Name="AuthorBox" Width="220" MaxLength="45" VerticalAlignment="Center" Height="26" />
@@ -110,5 +111,7 @@
                 <Button Content="Закрыть" Width="80" Margin="8,0,0,0" Click="Close_Click" Background="#FF99D2A2"/>
             </StackPanel>
         </StackPanel>
+        </StackPanel>
+
     </Grid>
 </Window>
