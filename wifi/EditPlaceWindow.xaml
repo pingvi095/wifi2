@@ -1,7 +1,7 @@
 ﻿<Window x:Class="wifi.EditPlaceWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Редактировать место" Height="500" Width="435" MinHeight = "500" MaxHeight = "500" MinWidth = "435" MaxWidth = "435"
+        Title="Редактировать место" Height="350" Width="435" MinHeight = "350" MaxHeight = "400" MinWidth = "435" MaxWidth = "435"
         WindowStartupLocation="CenterScreen"
         Background="#FF163832" ResizeMode="NoResize"
         >

@@ -1,7 +1,7 @@
 ﻿<Window x:Class="wifi.AddPlaceWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Добавить место" Height="550" Width="435" MinHeight = "550" MaxHeight = "550" MinWidth = "435" MaxWidth = "435"
+        Title="Добавить место" Height="450" Width="435" MinHeight = "450" MaxHeight = "450" MinWidth = "435" MaxWidth = "435"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
         Background="#FF163832"
      >
