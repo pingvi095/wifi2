@@ -42,10 +42,7 @@
                 <TextBlock x:Name="RatingText" Margin="0,4,0,8" Background="White"/>  <TextBlock Text="Название:" FontWeight="Bold" Foreground="White"/>
             <TextBlock x:Name="NameText" FontSize="16" FontWeight="SemiBold" Margin="0,4,0,8" Background="White"/>
 
-            <TextBlock Text="Описание:" FontWeight="Bold" Foreground="White"/>
-            <ScrollViewer Height="120" VerticalScrollBarVisibility="Auto" Margin="0,4,0,12">
-                <TextBlock x:Name="DescText" TextWrapping="Wrap" Foreground="White" Background="White"/>
-            </ScrollViewer>
+           
             </StackPanel>
         </StackPanel>
 

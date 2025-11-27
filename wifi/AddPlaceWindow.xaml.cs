@@ -81,13 +81,11 @@ namespace wifi
             var wifi = (WiFiBox.SelectedItem as ComboBoxItem)?.Content?.ToString()?.Trim() ?? "";
             var hours = WorkBox.Text.Trim();
             var contact = ContactBox.Text.Trim();
-            var desc = DescBox.Text.Trim();
-
+            
             // Проверка на заполненность всех полей
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(type) ||
                 string.IsNullOrWhiteSpace(address) || string.IsNullOrWhiteSpace(wifi) ||
-                string.IsNullOrWhiteSpace(hours) || string.IsNullOrWhiteSpace(contact) ||
-                string.IsNullOrWhiteSpace(desc))
+                string.IsNullOrWhiteSpace(hours) || string.IsNullOrWhiteSpace(contact))
             {
                 MessageBox.Show("Заполните все поля!");
                 return;
@@ -116,8 +114,8 @@ namespace wifi
             }
 
             // SQL-запрос для вставки данных в таблицу places
-            var query = @"INSERT INTO places (name,type,address,wifi_quality,work_hours,description,photo_path,contact)
-                          VALUES (@n,@t,@a,@w,@h,@d,@p,@c)";
+            var query = @"INSERT INTO places (name,type,address,wifi_quality,work_hours,photo_path,contact)
+                          VALUES (@n,@t,@a,@w,@h,@p,@c)";
 
             var parameters = new Dictionary<string, object>
             {
@@ -126,7 +124,6 @@ namespace wifi
                 { "@a", address },
                 { "@w", wifi },
                 { "@h", hours },
-                { "@d", desc },
                 { "@p", storedPath },
                 { "@c", contact }
             };
