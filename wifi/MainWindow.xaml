@@ -46,8 +46,11 @@
             <ComboBox x:Name="HoursFilter" Width="170" Margin="0,0,8,0" SelectionChanged="Filters_Changed">
                 <ComboBoxItem Content="Любые часы" IsSelected="True"/>
                 <ComboBoxItem Content="Круглосуточно"/>
-                <ComboBoxItem Content="До 23:00"/>
-                <ComboBoxItem Content="До 20:00"/>
+                <ComboBoxItem Content="06:00-23:00"/>
+                <ComboBoxItem Content="07:00-22:00"/>
+                <ComboBoxItem Content="08:00-21:00"/>
+                <ComboBoxItem Content="09:00-20:00"/>
+                <ComboBoxItem Content="10:00-19:00"/>
             </ComboBox>
 
             <TextBlock VerticalAlignment="Center" Margin="16,0,34,0" Foreground="White">Сортировать:</TextBlock>

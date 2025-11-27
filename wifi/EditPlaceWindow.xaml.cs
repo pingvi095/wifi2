@@ -31,45 +31,21 @@ namespace wifi
             LoadData();
         }
 
-        /// <summary>
-        /// Проверяет корректность формата часов работы.
-        /// Допускается формат "00:00-00:00" или значение "Круглосуточно".
-        /// </summary>
-        /// <param name="input">Введённая строка с часами работы.</param>
-        /// <returns><see langword="true"/>, если формат корректный; иначе <see langword="false"/>.</returns>
-        private bool ValidateWorkHours(string input)
-        {
-            if (string.IsNullOrWhiteSpace(input)) return false;
-
-            if (Regex.IsMatch(input, @"^круглосуточно$", RegexOptions.IgnoreCase))
-                return true;
-
-            if (Regex.IsMatch(input, @"^\d{2}:\d{2}-\d{2}:\d{2}$"))
-            {
-                string[] parts = input.Split('-', ':');
-                int h1 = int.Parse(parts[0]), m1 = int.Parse(parts[1]);
-                int h2 = int.Parse(parts[2]), m2 = int.Parse(parts[3]);
-                return h1 >= 0 && h1 <= 23 && h2 >= 0 && h2 <= 23 && m1 >= 0 && m1 <= 59 && m2 >= 0 && m2 <= 59;
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// Загружает данные выбранного места в соответствующие поля интерфейса.
-        /// </summary>
         private void LoadData()
         {
             NameBox.Text = place.Name;
             AddressBox.Text = place.Address;
-            WorkBox.Text = place.WorkHours;
+
             ContactBox.Text = place.Contact;
-            
+
 
             foreach (ComboBoxItem item in TypeBox.Items)
                 if (item.Content.ToString() == place.Type) { TypeBox.SelectedItem = item; break; }
 
             foreach (ComboBoxItem item in WiFiBox.Items)
                 if (item.Content.ToString() == place.WiFiQuality) { WiFiBox.SelectedItem = item; break; }
+            foreach (ComboBoxItem item in WorkBox.Items)
+                if (item.Content.ToString() == place.WorkHours) { WorkBox.SelectedItem = item; break; }
         }
 
         /// <summary>
@@ -82,7 +58,7 @@ namespace wifi
             var type = (TypeBox.SelectedItem as ComboBoxItem)?.Content?.ToString()?.Trim() ?? "";
             var address = AddressBox.Text.Trim();
             var wifi = (WiFiBox.SelectedItem as ComboBoxItem)?.Content?.ToString()?.Trim() ?? "";
-            var hours = WorkBox.Text.Trim();
+            var hours = (WorkBox.SelectedItem as ComboBoxItem)?.Content?.ToString()?.Trim() ?? "";
             var contact = ContactBox.Text.Trim();
             
 
@@ -95,17 +71,7 @@ namespace wifi
                 return;
             }
 
-            // Проверка формата часов работы
-            if (!ValidateWorkHours(hours))
-            {
-                MessageBox.Show("Неверный формат часов работы!");
-                return;
-            }
-
-            // Приведение к единому формату
-            if (Regex.IsMatch(hours, @"^круглосуточно$", RegexOptions.IgnoreCase))
-                hours = "Круглосуточно";
-
+        
             // Подготовка SQL-запроса
             string query = @"UPDATE places SET 
                                 name=@n,

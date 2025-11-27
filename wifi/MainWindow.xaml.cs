@@ -129,14 +129,10 @@ namespace wifi
             {
                 if (hoursSel == "Круглосуточно")
                     whereParts.Add("(LOWER(work_hours) LIKE '%24%' OR LOWER(work_hours) LIKE '%круглосуточ%' OR LOWER(work_hours) LIKE '%24/7%' OR LOWER(work_hours) LIKE '%24 часа%')");
-                else if (hoursSel == "До 23:00")
-                    whereParts.Add("(work_hours LIKE '%23%' OR LOWER(work_hours) LIKE '%до 23%' OR LOWER(work_hours) REGEXP '[^0-9]23(:00)?')");
-                else if (hoursSel == "До 20:00")
-                    whereParts.Add("(work_hours LIKE '%20%' OR LOWER(work_hours) LIKE '%до 20%' OR LOWER(work_hours) REGEXP '[^0-9]20(:00)?')");
                 else
                 {
-                    whereParts.Add("work_hours LIKE @hours");
-                    parameters["@hours"] = "%" + hoursSel + "%";
+                    whereParts.Add("work_hours = @hours");
+                    parameters["@hours"] = hoursSel;
                 }
             }
 

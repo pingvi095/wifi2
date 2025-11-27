@@ -29,8 +29,15 @@
                 <ComboBoxItem Content="Отлично"/>
             </ComboBox>
 
-            <TextBlock Text="Часы работы: (Вводите в формате 00:00-00:00; Круглосуточно)" Foreground="White"/>
-            <TextBox x:Name="WorkBox" MaxLength="45" Margin="0,0,0,8" TextWrapping="Wrap"/>
+            <TextBlock Text="Часы работы:" Foreground="White"/>
+            <ComboBox x:Name="WorkBox" Margin="0,0,0,8">
+                <ComboBoxItem Content="Круглосуточно"/>
+                <ComboBoxItem Content="06:00-23:00"/>
+                <ComboBoxItem Content="07:00-22:00"/>
+                <ComboBoxItem Content="08:00-21:00"/>
+                <ComboBoxItem Content="09:00-20:00"/>
+                <ComboBoxItem Content="10:00-19:00"/>
+            </ComboBox>
 
             <TextBlock Text="Контакт (тел/почта):" Foreground="White"/>
             <TextBox x:Name="ContactBox" MaxLength="45" Margin="0,0,0,8" TextWrapping="Wrap"/>
